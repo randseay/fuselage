@@ -46,6 +46,51 @@
     cursor: not-allowed !important;
 }
 
+// Tooltips (https://teamtreehouse.com/library/create-tooltips-with-css-2)
+.tip {
+    border-bottom: 1px $gray-tint-text dotted;
+    cursor: help;
+    position: relative;
+}
+
+.tip:before,
+.tip:after {
+    bottom: 0;
+    left: 50%;
+    position: absolute;
+    opacity: 0;
+    z-index: -100;
+}
+
+.tip:hover:before,
+.tip:focus:before,
+.tip:hover:after,
+.tip:focus:after {
+    opacity: 1;
+    z-index: 100;
+}
+
+.tip:before {
+    border-style: solid;
+    border-width: 10px 7.5px 0 7.5px;
+    border-color: $gray-tint transparent transparent transparent;
+    content: '';
+    transform: translate(-50%, -2rem);
+}
+
+.tip:after {
+    background: $gray-tint;
+    border-radius: .25em;
+    content: attr(data-tip);
+    font-size: modular-scale(2);
+    line-height: 1.15;
+    padding: ($spacing-unit / 3);
+    text-align: center;
+    transform: translate(-50%, calc(-2rem - 7.5px));
+    width: 200%;
+}
+
+
 // Font smoothing works best for light text on a dark background.
 .antialiased {
     -webkit-font-smoothing:antialiased;
